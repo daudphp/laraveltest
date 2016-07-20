@@ -11,6 +11,6 @@ class Comment extends Model
     protected $hidden = ['id', 'created_at', 'updated_at'];
 
     public function hotel(){
-    	return $this->belongsTo('App\Hotel')
+    	return $this->belongsTo('App\Hotel');
     }
 }

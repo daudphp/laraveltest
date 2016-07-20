@@ -12,8 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$hotel = App\Hotel::all();
+    return view('welcome')->with('hotel', $hotel);
 });
+Route::get('comments/{id}', function ($id) {
+	$comment = App\Comment::where('hotel_id', $id)
+               ->orderBy('id', 'desc')
+               ->get();
+	
+    return view('comment')->with('comment', $comment);
+});
+
+
 
 Route::auth();
 
