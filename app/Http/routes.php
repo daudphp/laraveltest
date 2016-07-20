@@ -16,9 +16,9 @@ Route::get('/', function () {
     return view('welcome')->with('hotel', $hotel);
 });
 Route::get('comments/{id}', function ($id) {
-	$comment = App\Comment::where('hotel_id', $id)
+	return $comment = App\Comment::where('hotel_id', $id)
                ->orderBy('id', 'desc')
-               ->get();
+               ->firstOrFail();
 	
     return view('comment')->with('comment', $comment);
 });
