@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'HomeController@index');
+
+// Route::get('/admin', function(){
+// 	return view('admin');
+// });
+Route::post('/add_hotel', 'HotelController@add_hotel');
+

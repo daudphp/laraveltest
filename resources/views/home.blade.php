@@ -8,7 +8,30 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    @if( Session::has('message') )
+                    <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                    </div>
+                    @endif
+                    <form action="{{url('add_hotel')}}" method="POST" role="form">
+                        <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                        <legend>Add</legend>
+                    
+                        <div class="form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="">label</label>
+                            <input type="text" class="form-control" name="name" 
+                            placeholder="Hotel Name">
+                            <span class="help-block">
+                                <strong>
+                                    {{ $errors->first('name') }}
+                                </strong>
+                            </span>
+                        </div>
+                    
+                        
+                    
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
